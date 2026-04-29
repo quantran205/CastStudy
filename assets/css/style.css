@@ -1,0 +1,138 @@
+
+:root {
+    --primary: #4e73df;
+    --secondary: #224abe;
+    --accent: #f6c23e;
+    --success: #1cc88a;
+    --danger: #e74a3b;
+    --dark-footer: #1a1c23;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #f0f2f5; 
+    color: #333;
+}
+
+
+.navbar {
+    background: var(--glass) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-link {
+    font-weight: 600 !important;
+    color: #444 !important;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.nav-link:hover { color: var(--primary) !important; }
+
+
+.hero-section {
+    padding: 140px 0;
+    background: linear-gradient(135deg, rgba(78, 115, 223, 0.85), rgba(34, 74, 190, 0.85)), 
+                url('https://vinhuni.edu.vn/data/1/images/2021/08/31/dai-hoc-vinh.jpg') center/cover !important;
+    border-radius: 0 0 80px 80px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.search-card {
+    margin-top: -60px;
+    border-radius: 25px !important;
+    border: none !important;
+    padding: 30px !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+}
+
+.form-select, .form-control {
+    border-radius: 12px !important;
+    transition: 0.3s !important;
+}
+
+.form-select:focus, .form-control:focus {
+    box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.15) !important;
+}
+
+
+.room-card {
+    border-radius: 24px !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.room-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12) !important;
+}
+
+.price-tag {
+    color: var(--danger);
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+
+.btn-primary.rounded-pill {
+    padding: 12px 28px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary)) !important;
+    border: none !important;
+}
+
+.btn-primary.rounded-pill:hover {
+    background: #e74a3b !important;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(231, 74, 59, 0.3) !important;
+}
+
+
+.footer-dark {
+    background-color: #1a1c23 !important; 
+    color: #a0aec0 !important;
+    padding: 80px 0 30px;
+}
+
+.footer-dark h5, .footer-dark h6 { 
+    color: #ffffff !important; 
+}
+
+.footer-dark a { 
+    color: #a0aec0 !important; 
+    text-decoration: none !important;
+    transition: 0.3s;
+}
+
+.footer-dark a:hover { 
+    color: #ffffff !important; 
+    padding-left: 5px;
+}
+
+.social-icon {
+    display: inline-flex;
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,0.05);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #fff !important;
+    margin-right: 10px;
+}
+
+.social-icon:hover {
+    background: var(--primary) !important;
+    transform: translateY(-5px);
+    color: #fff !important;
+}
+
+footer {
+    overflow: hidden;
+}

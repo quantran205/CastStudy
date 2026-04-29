@@ -1,0 +1,64 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Mẹo fix link: Kiểm tra nếu đang ở trong folder admin thì lùi ra 1 cấp
+$current_dir = basename(dirname($_SERVER['PHP_SELF']));
+$path = ($current_dir == 'admin') ? '../' : '';
+?>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trọ xịn – Giá mịn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo $path; ?>assets/css/style.css?v=<?php echo time(); ?>">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="<?php echo $path; ?>index.php">
+            <i class="fa-solid fa-house-chimney-window me-2"></i>Trọ xịn – Giá mịn
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link fw-semibold" href="<?php echo $path; ?>index.php">Trang chủ</a></li>
+                
+                <?php if(!isset($_SESSION['user'])): ?>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="<?php echo $path; ?>login.php">Đăng nhập</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white btn btn-primary rounded-pill px-4 ms-lg-2 shadow-sm" href="<?php echo $path; ?>register.php">Tham gia ngay</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="<?php echo $path; ?>uploads/<?php echo $_SESSION['user']['avatar']; ?>" class="rounded-circle me-2 border border-primary-subtle" width="35" height="35" style="object-fit: cover;">
+                        <span class="fw-bold text-dark">Hi, <?php echo $_SESSION['user']['name']; ?></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-3 rounded-4 p-2">
+                        <li><a class="dropdown-item py-2 rounded-3" href="<?php echo $path; ?>profile.php"><i class="fa-solid fa-user-circle me-2 text-muted"></i> Hồ sơ cá nhân</a></li>
+                        <li><a class="dropdown-item py-2 rounded-3" href="<?php echo $path; ?>my-rooms.php"><i class="fa-solid fa-list-check me-2 text-muted"></i> Quản lý tin đăng</a></li>
+        
+                <?php if($_SESSION['user']['role'] == 2): ?> 
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-primary fw-bold rounded-3" href="<?php echo $path; ?>admin/dashboard.php"><i class="fa-solid fa-gauge-high me-2"></i> Quản trị hệ thống</a></li>
+                 <?php endif; ?>
+        
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-danger py-2 rounded-3" href="<?php echo $path; ?>logout.php"><i class="fa-solid fa-power-off me-2"></i> Đăng xuất</a></li>
+    </ul>
+                </li>
+</li>
+
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+</nav>
