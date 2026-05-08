@@ -1,9 +1,13 @@
 <?php 
 session_start();
+if(!isset($_SESSION['failed'])){
+    $_SESSION['failed'] = 0;
+}
+
 if(isset($_SESSION['user'])) header('Location: index.php');// nếu log rồi thì đá về trang chủ
 include 'includes/header.php'; 
 ?>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
     <div class="card border-0 shadow-lg p-4 rounded-4" style="max-width: 400px; width: 100%;">
         <div class="text-center mb-4">
@@ -32,6 +36,13 @@ include 'includes/header.php';
                     <input type="password" name="password" class="form-control bg-light border-0 p-3" placeholder="********" required>
                 </div>
             </div>
+            <?php if($_SESSION['failed'] >= 3): ?>
+
+            <div class="mb-3">
+                <div class="g-recaptcha" data-sitekey="6Ldg6N8sAAAAAGx9gXT_y4WDJOzPZZkXFJ8RHM9E"></div>
+            </div>
+
+<?php endif; ?>
             <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow">Đăng nhập ngay</button>
         </form>
 

@@ -45,7 +45,7 @@ $path = ($current_dir == 'admin') ? '../' : '';
                         <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-3 rounded-4 p-2">
                         <li><a class="dropdown-item py-2 rounded-3" href="<?php echo $path; ?>profile.php"><i class="fa-solid fa-user-circle me-2 text-muted"></i> Hồ sơ cá nhân</a></li>
                         <li><a class="dropdown-item py-2 rounded-3" href="<?php echo $path; ?>my-rooms.php"><i class="fa-solid fa-list-check me-2 text-muted"></i> Quản lý tin đăng</a></li>
-        
+                        
                 <?php if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 2): ?> 
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-primary fw-bold rounded-3" href="<?php echo $path; ?>admin/dashboard.php"><i class="fa-solid fa-gauge-high me-2"></i> Quản trị hệ thống</a></li>
@@ -62,3 +62,47 @@ $path = ($current_dir == 'admin') ? '../' : '';
         </div>
     </div>
 </nav>
+</nav>
+
+<?php if (isset($_SESSION['user'])): ?>
+    <!-- Nút icon chat nổi -->
+    <div id="chatFloatBtn" onclick="toggleChatBox()">
+        <i class="fa-solid fa-comments"></i>
+    </div>
+
+    <!-- Khung chat -->
+    <div id="chatBox">
+        <div class="chat-box-header">
+            <span><i class="fa-solid fa-comments me-2"></i>Chat với chủ trọ</span>
+            <button onclick="toggleChatBox()">×</button>
+        </div>
+
+        <div class="chat-box-body">
+            <div class="chat-user-list" id="chatUserList">
+                <div class="chat-loading">Đang tải người dùng...</div>
+            </div>
+
+            <div class="chat-content">
+                <div class="chat-title" id="chatTitle">Chọn người để chat</div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-empty">Chưa chọn cuộc trò chuyện</div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="chatMessageInput" placeholder="Nhập tin nhắn...">
+
+                    <button onclick="sendPopupMessage()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const currentUserID = <?= (int)$_SESSION['user']['ID'] ?>;
+    </script>
+
+    <script src="<?= $path ?>assets/js/chat.js?v=<?= time(); ?>"></script>
+<?php endif; ?>
