@@ -314,7 +314,7 @@ function getDistanceKm(lat1, lon1, lat2, lon2) {
 const distance = getDistanceKm(vinhLat, vinhLng, roomLat, roomLng);
 
 document.getElementById("distanceText").innerHTML = 
-    "Cách Đại học Vinh khoảng <strong>" + distance.toFixed(2) + " km</strong> theo đường chim bay.";
+    "Cách Đại học Vinh khoảng <strong>" + distance.toFixed(2) + " km</strong> Theo đường chim bay.";
 
 function showReact(id){
     document.getElementById("react-box-" + id).style.display = "block";

@@ -32,7 +32,7 @@ include 'includes/header.php';
 
         <?php if (isset($_GET['success'])): ?>
             <div class="alert alert-success">
-                🎉 Đăng phòng thành công! Tin của bạn đang chờ duyệt.
+                🎉 Đăng phòng thành công! tin của bạn đang chờ duyệt.
             </div>
         <?php endif; ?>
 

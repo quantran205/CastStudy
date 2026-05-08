@@ -90,7 +90,7 @@ if (!$result) {
             <?php if ($near_vinh == '1'): ?>
                 <div class="text-muted small">
                     Đang lọc phòng trong bán kính 
-                    <strong><?php echo $radiusKm; ?>km</strong> quanh Đại học Vinh
+                    <strong><?php echo $radiusKm; ?>km</strong> quanh Đại Học Vinh
                 </div>
             <?php endif; ?>
         </div>

@@ -62,7 +62,7 @@ if (!$result) {
 
                 <div class="text-muted small">
                     Phòng trong bán kính 
-                    <strong><?php echo $radiusKm; ?>km</strong> quanh Đại học Vinh
+                    <strong><?php echo $radiusKm; ?>km</strong> quanh Đại Học Vinh
                 </div>
 
             <?php endif; ?>

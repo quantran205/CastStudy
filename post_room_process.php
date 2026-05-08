@@ -28,7 +28,7 @@ $longitude = $_POST['lng'] ?? null;
 
 // kiểm tra tọa độ bắt buộc
 if ($latitude === null || $longitude === null || $latitude === '' || $longitude === '') {
-    die("Lỗi: bạn chưa chọn vị trí phòng trọ trên bản đồ.");
+    die("Lỗi: Bạn chưa chọn vị trí phòng trọ trên bản đồ.");
 }
 
 $latitude = (float)$latitude;

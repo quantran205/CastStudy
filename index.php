@@ -181,7 +181,7 @@ require_once 'includes/header.php';
 
             <div class="card sidebar-card shadow-sm p-4 bg-white mb-4 border-0 rounded-4">
                 <h5 class="fw-bold mb-4">
-                    <i class="fa-solid fa-fire text-danger me-2"></i>Xem nhiều nhất
+                    <i class="fa-solid fa-fire text-danger me-2"></i>xem nhiều nhất
                 </h5>
 
                 <div class="list-group list-group-flush">
