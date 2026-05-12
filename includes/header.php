@@ -3,6 +3,22 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Thông báo khi admin phản hồi
+$notifyCount = 0;
+if(isset($_SESSION['user'])){
+    include_once 'db_config.php';
+    $userID = $_SESSION['user']['ID'];
+    $notifyQuery = mysqli_query( $conn,
+        "SELECT COUNT(*) as total
+         FROM feedbacks
+         WHERE UserID='$userID'
+         AND AdminReply IS NOT NULL
+         AND IsRead = 0"
+    );
+    $notifyData = mysqli_fetch_assoc($notifyQuery);
+    $notifyCount = $notifyData['total'];
+}
+
 // Đếm số tin đã lưu để hiển thị ở header
 $favorites_count = 0;
 if (isset($conn) && (isset($_SESSION['user_id']) || isset($_SESSION['user']['ID']))) {
@@ -49,6 +65,16 @@ $path = ($current_dir == 'admin') ? '../' : '';
                             <span id="wishlistCount" class="badge bg-danger rounded-pill ms-1"><?php echo $favorites_count; ?></span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="<?php echo $path; ?>feedback.php">Liên hệ
+                        <i class="fa-solid fa-bell fs-5"></i> 
+                        <?php if($notifyCount > 0): ?>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <?= $notifyCount ?>
+                        </span>
+                        <?php endif; ?>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 
                 <?php if(!isset($_SESSION['user']) && !isset($_SESSION['user_id'])): ?>
@@ -82,7 +108,7 @@ $path = ($current_dir == 'admin') ? '../' : '';
         </div>
     </div>
 </nav>
-</nav>
+
 
 <?php if (isset($_SESSION['user'])): ?>
     <!-- Nút icon chat nổi -->

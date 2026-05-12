@@ -106,6 +106,26 @@ $total_views   = get_count($conn, "SELECT SUM(count_view) as total FROM motel");
                             <small class="text-muted">Báo cáo tin đăng theo tháng</small>
                         </a>
                     </div>
+                    <div class="col-md-4">
+                        <?php
+                        $feedback_count = get_count(
+                        $conn,
+                            "SELECT COUNT(*) as total
+                            FROM feedbacks
+                            WHERE Status='pending'"
+                        );
+                        ?>
+                        <a href="admin_feedback.php" class="btn btn-light w-100 p-4 rounded-4 text-start border-0 shadow-sm hover-up h-100 position-relative">
+                            <i class="fa-solid fa-headset text-danger mb-3 fs-3"></i>
+                            <div class="fw-bold"> Phản hồi hệ thống</div>
+                            <small class="text-muted"> Trả lời phản hồi người dùng</small>
+                            <?php if($feedback_count > 0): ?>
+                            <span class="badge bg-danger rounded-pill mt-2">
+                                <?= $feedback_count ?> phản hồi mới
+                            </span>
+                            <?php endif; ?>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
